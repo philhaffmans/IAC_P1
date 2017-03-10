@@ -1,0 +1,54 @@
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+	xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" 
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+	xmlns:req="http://buurtservice/berichten/request" 
+	xmlns:rsp="http://buurtservice/berichten/response"
+  	xmlns:flt="http://buurtservice/berichten/error"
+  	xmlns="http://buurtservice/berichten/"
+	targetNamespace="http://buurtservice/berichten/">
+	<wsdl:types>
+		<xsd:schema>
+			<xsd:import namespace="http://buurtservice/berichten/request" schemaLocation="request.xsd" />
+			<xsd:import namespace="http://buurtservice/berichten/response" schemaLocation="response.xsd" />
+
+			<xsd:import namespace="http://buurtservice/berichten/error" schemaLocation="error.xsd" />
+
+		</xsd:schema>
+	</wsdl:types>
+	<wsdl:message name="request">
+		<wsdl:part name="parameters" element="req:BuurtService-request"/>
+	</wsdl:message>
+	<wsdl:message name="response">
+		<wsdl:part name="response" element="rsp:BuurtService-response"/>
+	</wsdl:message>
+	<wsdl:message name="ApplicatieFout">
+		<wsdl:part name="foutmelding" element="flt:ApplicatieFout"></wsdl:part>
+	</wsdl:message>
+	<wsdl:portType name="WS-Interface"> 
+		<wsdl:operation name="getInwoners">
+			<wsdl:input message="request"/>
+			<wsdl:output message="response"/>
+			<wsdl:fault name="ApplicatieFout" message="ApplicatieFout"/>
+       	</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="WS-Binding" type="WS-Interface">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/> 
+		<wsdl:operation name="getInwoners">
+			<soap:operation soapAction="" style="document"/> 
+			<wsdl:input>
+     			<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+     			<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="ApplicatieFout">
+				<soap:fault name="ApplicatieFout" use="literal"/>
+			</wsdl:fault>
+       	</wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="mijnService">
+		<wsdl:port name="WS-Port" binding="WS-Binding">
+		<soap:address location="http://localhost:8080/services/app"/></wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

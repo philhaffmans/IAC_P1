@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://buurtservice/berichten/request" targetNamespace="http://buurtservice/berichten/request" elementFormDefault="qualified">
+ <xs:element name="BuurtService-request">
+ <xs:complexType>  
+  <xs:sequence>  
+   <xs:element name="Jaar" type="xs:int" maxOccurs="1"/> 
+   <xs:element name="Wijk" type="xs:string" maxOccurs="1"/>  
+  </xs:sequence> 
+ </xs:complexType>
+</xs:element>
+</xs:schema>
