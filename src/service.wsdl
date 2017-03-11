@@ -11,9 +11,7 @@
 		<xsd:schema>
 			<xsd:import namespace="http://buurtservice/berichten/request" schemaLocation="request.xsd" />
 			<xsd:import namespace="http://buurtservice/berichten/response" schemaLocation="response.xsd" />
-
 			<xsd:import namespace="http://buurtservice/berichten/error" schemaLocation="error.xsd" />
-
 		</xsd:schema>
 	</wsdl:types>
 	<wsdl:message name="request">
